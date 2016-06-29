@@ -8,7 +8,7 @@
   
   <properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<java.version>1.7</java.version>
+		<java.version>1.8</java.version>
 		<commons-httpclient.version>3.1</commons-httpclient.version>
 		<httpclient.version>4.5.1</httpclient.version>
 		<commons-codec.version>1.10</commons-codec.version>
@@ -43,21 +43,23 @@
 			<plugin>
 		 		<groupId>org.apache.cxf</groupId>
   				<artifactId>cxf-codegen-plugin</artifactId>
-  				<version>3.1.4</version>
+  				<version>3.1.6</version>
           		<executions>
                 	<execution>
-                		<id>AXLPort10.0</id>
+                		<id>wsdl2java-gen</id>
       					<phase>generate-sources</phase>
                     	<goals>
 					        <goal>wsdl2java</goal>
       					</goals>
 
 						<configuration>
+							<additionalJvmArgs>-Djavax.xml.accessExternalSchema=file</additionalJvmArgs>
         					<sourceRoot>${project.basedir}/src/main/java/</sourceRoot>
         					<wsdlOptions>
 				          		<wsdlOption>
 				            		<wsdl>${project.basedir}/schema/10.0/AXLAPI.wsdl</wsdl>
 				            		<wsdlLocation>file:schema/10.0/AXLAPI.wsdl</wsdlLocation>
+				            		
 				            		<extraargs>
                                     	<extraarg>-validate</extraarg>
                                     	<extraarg>-client</extraarg>
@@ -65,35 +67,23 @@
                                     	<extraarg>-xjc-verbose</extraarg>
                                     </extraargs>
 				            	</wsdlOption>
-				        	</wsdlOptions>
-				      	</configuration>
-					</execution>
-					
-					<!-- <execution>
-                		<id>RISPort10.5</id>
-      					<phase>generate-sources</phase>
-                    	<goals>
-					        <goal>wsdl2java</goal>
-      					</goals>
-
-						<configuration>
-        					<sourceRoot>${project.basedir}/src/main/java</sourceRoot>
-        					<wsdlOptions>
-				          		<wsdlOption>
-				          			<wsdl>${project.basedir}/schema/RISPort/10.5/RISService70.wsdl</wsdl>
-				            		<wsdlLocation>file:schema/RISPort/10.5/RISService70.wsdl</wsdlLocation>
+				            	<wsdlOption>
+				          			<wsdl>${project.basedir}/schema/RISPort/RISService70.wsdl</wsdl>
+				            		<wsdlLocation>file:schema/RISPort/RISService70.wsdl</wsdlLocation>
 				            		<extraargs>
                                     	<extraarg>-validate</extraarg>
                                     	<extraarg>-client</extraarg>
                                     	<extraarg>-verbose</extraarg>
                                     	<extraarg>-xjc-verbose</extraarg>
                                     	<extraarg>-p</extraarg>
-                                    	<extraarg>com.cisco.risapi._105</extraarg>
+                                    	<extraarg>com.cisco.risapi</extraarg>
                                 	</extraargs>
 				           		</wsdlOption>
 				        	</wsdlOptions>
 				      	</configuration>
-					</execution> --> 
+					</execution>
+					
+					  
 				</executions>
           	</plugin>
           	

@@ -16,6 +16,10 @@ public class AXLError
 {
 
     /**
+	 * 
+	 */
+	private static final long serialVersionUID = 9131498335950249475L;
+	/**
      * Java type that goes as soapenv:Fault detail element.
      * 
      */

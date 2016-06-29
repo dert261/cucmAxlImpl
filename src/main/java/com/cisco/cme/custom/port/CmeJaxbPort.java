@@ -24,48 +24,42 @@ public abstract class CmeJaxbPort {
 	
 	protected abstract Response request(Request request) throws IOException, JAXBException;
 	
-	private Response soapRequest(Request request){
+	private Response soapRequest(Request request) throws IOException, JAXBException{
 		Response response = null;
-		try {
-			response = request(request);
-		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (JAXBException e) {
-			e.printStackTrace();
-		}
+		response = request(request);
 		return response;
 	}
 	
 	//---------- Global Settings ---------------//
-	public Response getGlobalSettings(){
+	public Response getGlobalSettings() throws IOException, JAXBException{
 		Request request = new Request();
 		request.setISgetGlobal(new ISgetGlobal());
 		return soapRequest(request);
 	}
 	
 	//---------- Device ---------------//
-	public Response getAllDevices(){
+	public Response getAllDevices() throws IOException, JAXBException{
 		Request request = new Request();
 		ISgetDevice devReq = new ISgetDevice();
 		devReq.setISKeyword("all");
 		request.setISgetDevice(devReq);
 		return soapRequest(request);
 	}
-	public Response getAllDevicesByTag(){
+	public Response getAllDevicesByTag() throws IOException, JAXBException{
 		Request request = new Request();
 		ISgetDevice devReq = new ISgetDevice();
 		devReq.setISKeyword("allTag");
 		request.setISgetDevice(devReq);
 		return soapRequest(request);
 	}
-	public Response getDeviceById(String id){
+	public Response getDeviceById(String id) throws IOException, JAXBException{
 		Request request = new Request();
 		ISgetDevice devReq = new ISgetDevice();
 		devReq.setISDevID(id);
 		request.setISgetDevice(devReq);
 		return soapRequest(request);
 	}
-	public Response getDeviceByName(String name){
+	public Response getDeviceByName(String name) throws IOException, JAXBException{
 		Request request = new Request();
 		ISgetDevice devReq = new ISgetDevice();
 		devReq.setISDevName(name);
@@ -74,28 +68,28 @@ public abstract class CmeJaxbPort {
 	}
 	
 	//---------- Extension ---------------//
-	public Response getAllExtensions(){
+	public Response getAllExtensions() throws IOException, JAXBException{
 		Request request = new Request();
 		ISgetExtension extReq = new ISgetExtension();
 		extReq.setISKeyword("all");
 		request.setISgetExtension(extReq);
 		return soapRequest(request);
 	}
-	public Response getAllExtensionsByTag(){
+	public Response getAllExtensionsByTag() throws IOException, JAXBException{
 		Request request = new Request();
 		ISgetExtension extReq = new ISgetExtension();
 		extReq.setISKeyword("allTag");
 		request.setISgetExtension(extReq);
 		return soapRequest(request);
 	}
-	public Response getExtensionById(String id){
+	public Response getExtensionById(String id) throws IOException, JAXBException{
 		Request request = new Request();
 		ISgetExtension extReq = new ISgetExtension();
 		extReq.setISExtID(id);
 		request.setISgetExtension(extReq);
 		return soapRequest(request);
 	}
-	public Response getExtensionByNumber(String number){
+	public Response getExtensionByNumber(String number) throws IOException, JAXBException{
 		Request request = new Request();
 		ISgetExtension extReq = new ISgetExtension();
 		extReq.setISExtNumber(number);
@@ -104,34 +98,34 @@ public abstract class CmeJaxbPort {
 	}
 	
 	//---------- Global SIP Settings ---------------//
-	public Response getGlobalSipSettings(){
+	public Response getGlobalSipSettings() throws IOException, JAXBException{
 		Request request = new Request();
 		request.setISgetVoiceRegGlobal(new ISgetVoiceRegGlobal());
 		return soapRequest(request);
 	}
 	//---------- SIP Devices ---------------//
-	public Response getAllSipDevices(){
+	public Response getAllSipDevices() throws IOException, JAXBException{
 		Request request = new Request();
 		ISgetSipDevice devReq = new ISgetSipDevice();
 		devReq.setISKeyword("all");
 		request.setISgetSipDevice(devReq);
 		return soapRequest(request);
 	}
-	public Response getAllSipDevicesByTag(){
+	public Response getAllSipDevicesByTag() throws IOException, JAXBException{
 		Request request = new Request();
 		ISgetSipDevice devReq = new ISgetSipDevice();
 		devReq.setISKeyword("allTag");
 		request.setISgetSipDevice(devReq);
 		return soapRequest(request);
 	}
-	public Response getSipDeviceById(String id){
+	public Response getSipDeviceById(String id) throws IOException, JAXBException{
 		Request request = new Request();
 		ISgetSipDevice devReq = new ISgetSipDevice();
 		devReq.setISPoolID(id);
 		request.setISgetSipDevice(devReq);
 		return soapRequest(request);
 	}
-	public Response getSipDeviceByName(String name){
+	public Response getSipDeviceByName(String name) throws IOException, JAXBException{
 		Request request = new Request();
 		ISgetSipDevice devReq = new ISgetSipDevice();
 		devReq.setISPoolName(name);
@@ -140,28 +134,28 @@ public abstract class CmeJaxbPort {
 	}
 	
 	//---------- SIP Extension ---------------//
-	public Response getAllSipExtensions(){
+	public Response getAllSipExtensions() throws IOException, JAXBException{
 		Request request = new Request();
 		ISgetSipExtension extReq = new ISgetSipExtension();
 		extReq.setISKeyword("all");
 		request.setISgetSipExtension(extReq);
 		return soapRequest(request);
 	}
-	public Response getAllSipExtensionsByTag(){
+	public Response getAllSipExtensionsByTag() throws IOException, JAXBException{
 		Request request = new Request();
 		ISgetSipExtension extReq = new ISgetSipExtension();
 		extReq.setISKeyword("allTag");
 		request.setISgetSipExtension(extReq);
 		return soapRequest(request);
 	}
-	public Response getSipExtensionById(String id){
+	public Response getSipExtensionById(String id) throws IOException, JAXBException{
 		Request request = new Request();
 		ISgetSipExtension extReq = new ISgetSipExtension();
 		extReq.setISVoiceRegDNID(id);
 		request.setISgetSipExtension(extReq);
 		return soapRequest(request);
 	}
-	public Response getSipExtensionByNumber(String number){
+	public Response getSipExtensionByNumber(String number) throws IOException, JAXBException{
 		Request request = new Request();
 		ISgetSipExtension extReq = new ISgetSipExtension();
 		extReq.setISVoiceRegNumber(number);
@@ -170,7 +164,7 @@ public abstract class CmeJaxbPort {
 	}
 	
 	//---------- Sip Presence Global ---------//
-	public Response getSipPresenceGlobal(){
+	public Response getSipPresenceGlobal() throws IOException, JAXBException{
 		Request request = new Request();
 		ISgetPresenceGlobal presenceReq = new ISgetPresenceGlobal();
 		request.setISgetPresenceGlobal(presenceReq);
@@ -178,7 +172,7 @@ public abstract class CmeJaxbPort {
 	}
 	
 	//---------- Sip Session Server ---------//
-	public Response getAllSipSessionServer(){
+	public Response getAllSipSessionServer() throws IOException, JAXBException{
 		Request request = new Request();
 		ISgetSessionServer sessServerReq = new ISgetSessionServer();
 		sessServerReq.setISKeyword("all");
@@ -186,7 +180,7 @@ public abstract class CmeJaxbPort {
 		return soapRequest(request);
 	}
 	
-	public Response getSipSessionServerById(String id){
+	public Response getSipSessionServerById(String id) throws IOException, JAXBException{
 		Request request = new Request();
 		ISgetSessionServer sessServerReq = new ISgetSessionServer();
 		sessServerReq.setISSessionServerID(id);
@@ -194,7 +188,7 @@ public abstract class CmeJaxbPort {
 		return soapRequest(request);
 	}
 	
-	public Response getSipSessionServerByName(String name){
+	public Response getSipSessionServerByName(String name) throws IOException, JAXBException{
 		Request request = new Request();
 		ISgetSessionServer sessServerReq = new ISgetSessionServer();
 		sessServerReq.setISSessionServerName(name);
@@ -203,7 +197,7 @@ public abstract class CmeJaxbPort {
 	}
 	
 	//---------- User ---------------//
-	public Response getUserById(String id){
+	public Response getUserById(String id) throws IOException, JAXBException{
 		Request request = new Request();
 		ISgetUser usrReq = new ISgetUser();
 		usrReq.setISuserID(id);
@@ -212,14 +206,14 @@ public abstract class CmeJaxbPort {
 	}
 		
 	//---------- User Profile ---------------//
-	public Response getAllUserProfiles(){
+	public Response getAllUserProfiles() throws IOException, JAXBException{
 		Request request = new Request();
 		ISgetUserProfile usrProfReq = new ISgetUserProfile();
 		usrProfReq.setISKeyword("all");
 		request.setISgetUserProfile(usrProfReq);
 		return soapRequest(request);
 	}
-	public Response getUserProfileById(String id){
+	public Response getUserProfileById(String id) throws IOException, JAXBException{
 		Request request = new Request();
 		ISgetUserProfile usrProfReq = new ISgetUserProfile();
 		usrProfReq.setISuserID(id);
@@ -228,7 +222,7 @@ public abstract class CmeJaxbPort {
 	}
 	
 	//---------- Voice Hunt Group ---------//
-	public Response getAllVoiceHuntGroups(){
+	public Response getAllVoiceHuntGroups() throws IOException, JAXBException{
 		Request request = new Request();
 		ISgetVoiceHuntGroup huntGroupReq = new ISgetVoiceHuntGroup();
 		huntGroupReq.setISKeyword("all");
@@ -236,7 +230,7 @@ public abstract class CmeJaxbPort {
 		return soapRequest(request);
 	}
 		
-	public Response getVoiceHuntGroupById(String id){
+	public Response getVoiceHuntGroupById(String id) throws IOException, JAXBException{
 		Request request = new Request();
 		ISgetVoiceHuntGroup huntGroupReq = new ISgetVoiceHuntGroup();
 		huntGroupReq.setISVoiceHuntGroupID(id);
@@ -245,7 +239,7 @@ public abstract class CmeJaxbPort {
 	}
 		
 	//---------- Voice Hunt Group ---------//
-	public Response getAllUtilityDirectory(){
+	public Response getAllUtilityDirectory() throws IOException, JAXBException{
 		Request request = new Request();
 		ISgetUtilityDirectory utilDirReq = new ISgetUtilityDirectory();
 		request.setISgetUtilityDirectory(utilDirReq);
@@ -253,21 +247,21 @@ public abstract class CmeJaxbPort {
 	}
 	
 	//---------- Device Template---------------//
-	public Response getAllDeviceTemplates(){
+	public Response getAllDeviceTemplates() throws IOException, JAXBException{
 		Request request = new Request();
 		ISgetDeviceTemplate devTempReq = new ISgetDeviceTemplate();
 		devTempReq.setISKeyword("all");
 		request.setISgetDeviceTemplate(devTempReq);
 		return soapRequest(request);
 	}
-	public Response getDeviceTemplateById(String id){
+	public Response getDeviceTemplateById(String id) throws IOException, JAXBException{
 		Request request = new Request();
 		ISgetDeviceTemplate devTempReq = new ISgetDeviceTemplate();
 		devTempReq.setISDevTemplateID(id);
 		request.setISgetDeviceTemplate(devTempReq);
 		return soapRequest(request);
 	}
-	public Response getDeviceTemplateAvailable(){
+	public Response getDeviceTemplateAvailable() throws IOException, JAXBException{
 		Request request = new Request();
 		ISgetDeviceTemplate devTempReq = new ISgetDeviceTemplate();
 		devTempReq.setISKeyword("available");
@@ -276,21 +270,21 @@ public abstract class CmeJaxbPort {
 	}
 		
 	//---------- Extension Template---------------//
-	public Response getAllExtensionTemplates(){
+	public Response getAllExtensionTemplates() throws IOException, JAXBException{
 		Request request = new Request();
 		ISgetExtensionTemplate extTempReq = new ISgetExtensionTemplate();
 		extTempReq.setISKeyword("all");
 		request.setISgetExtensionTemplate(extTempReq);
 		return soapRequest(request);
 	}
-	public Response getExtensionTemplateById(String id){
+	public Response getExtensionTemplateById(String id) throws IOException, JAXBException{
 		Request request = new Request();
 		ISgetExtensionTemplate extTempReq = new ISgetExtensionTemplate();
 		extTempReq.setISExtTemplateID(id);
 		request.setISgetExtensionTemplate(extTempReq);
 		return soapRequest(request);
 	}
-	public Response getExtensionTemplateAvailable(){
+	public Response getExtensionTemplateAvailable() throws IOException, JAXBException{
 		Request request = new Request();
 		ISgetExtensionTemplate extTempReq = new ISgetExtensionTemplate();
 		extTempReq.setISKeyword("available");
